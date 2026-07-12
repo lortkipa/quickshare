@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Service.Dtos;
+using Service.Interfaces;
 
 namespace Api.Controllers
 {
@@ -7,10 +9,19 @@ namespace Api.Controllers
     [ApiController]
     public class LinksController : ControllerBase
     {
-        [HttpPost]
-        public async Task<IActionResult> CreateAsync()
+        private readonly ILinkService _linkService;
+
+        public LinksController(ILinkService linkService)
         {
-            return Ok();
+            _linkService = linkService;    
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<LinkDto>> CreateAsync(IFormFile[] files)
+        {
+            var link = await _linkService.CreateAsync(files);
+
+            return Ok(link);
         }
 
         [HttpGet("{slug}")]

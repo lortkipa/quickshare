@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entities
+namespace Service.Dtos
 {
-    public class Link
+    public class LinkDto
     {
-        public int Id { get; set; }
         public string Slug { get; set; } = null!;
         public bool Expired { get; set; }
-
-        public ICollection<LinkFile> Files { get; set; } = new List<LinkFile>();
     }
 }

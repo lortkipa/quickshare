@@ -19,6 +19,8 @@ namespace Data.Configurations
                 .HasMaxLength(6);
             builder.HasIndex(l => l.Slug)
                 .IsUnique();
+            builder.Property(l => l.Expired)
+                .IsRequired();
 
             builder.HasMany(l => l.Files)
                 .WithOne(f => f.Link)

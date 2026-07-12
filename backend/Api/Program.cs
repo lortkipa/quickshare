@@ -1,5 +1,9 @@
 using Data;
+using Dal.Interfaces;
+using Dal.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Service.Interfaces;
+using Service.Services;
 
 namespace Api
 {
@@ -14,6 +18,11 @@ namespace Api
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"));
             });
             builder.Services.AddScoped<DbContext,  ProjectDBContext>();
+
+            builder.Services.AddScoped<ILinkRepository, LinkRepository>();
+            builder.Services.AddScoped<ILinkService, LinkService>();
+
+            builder.Services.AddScoped<ILinkFileRepository, LinkFileRepository>();
 
             builder.Services.AddControllers();
 
