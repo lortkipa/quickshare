@@ -7,5 +7,6 @@ namespace Dal.Interfaces
 {
     public interface ILinkFileRepository : IBaseRepository<LinkFile>
     {
+        Task<IEnumerable<LinkFile>> GetAllByLinkId(int id);
     }
 }

@@ -23,6 +23,7 @@ namespace Api
             builder.Services.AddScoped<ILinkService, LinkService>();
 
             builder.Services.AddScoped<ILinkFileRepository, LinkFileRepository>();
+            builder.Services.AddScoped<ILinkFileService, LinkFileService>();
 
             builder.Services.AddControllers();
 
